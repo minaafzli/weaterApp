@@ -22,6 +22,20 @@ class _MyWidgetState extends State<MyWidget> {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 44, 121, 184),
         title: const Text("weater App"),
+        elevation: 20,
+        shadowColor:const Color.fromARGB(255, 35, 87, 130),
+        actions: [
+          PopupMenuButton(itemBuilder:  (context) {
+            return {'setting' , 'profile'}.map((String choice){
+              return PopupMenuItem(
+                value: choice,
+                child: Text(choice),
+              );
+            }).toList();
+          } 
+          
+          )
+        ]
       ),
       body: Container(
        
