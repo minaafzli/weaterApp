@@ -1,3 +1,6 @@
+// ignore_for_file: unused_local_variable, avoid_print
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 
@@ -16,6 +19,14 @@ class MyWidget extends StatefulWidget {
 }
 
 class _MyWidgetState extends State<MyWidget> {
+
+  @override
+  void initState() {
+    sendRequestCurrentWeater();
+    super.initState();
+    
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -246,5 +257,16 @@ class _MyWidgetState extends State<MyWidget> {
         ),
       ),
     );
+  }
+  void sendRequestCurrentWeater()async {
+    var apikey = 'df0a0e9553dccb8386910b9cb58deba8';
+    var cityName = "Berlin";
+
+    var response = await Dio().get("https://api.openweathermap.org/data/2.5/weather",
+      queryParameters: {'q':cityName , 'appid':apikey , 'units': 'metric'}
+      );
+      print(response.data);
+      print(response.statusCode);
+
   }
 }
