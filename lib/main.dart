@@ -1,7 +1,6 @@
-// ignore_for_file: unused_local_variable, avoid_print
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/model/currentCityData.dart';
 
 
 void main() {
@@ -267,6 +266,23 @@ class _MyWidgetState extends State<MyWidget> {
       );
       print(response.data);
       print(response.statusCode);
+      var dataModel = currentCityData(
+        response.data["name"], 
+        response.data["weater"][0]["lon"], 
+        response.data["sys"]["country"], 
+        response.data["visibility"]["speed"],
+        response.data["dt"],
+        response.data["sys"]["sunrise"],
+        response.data["sys"]["sunset"], 
+        response.data["main"]["humidity"], 
+        response.data["main"]["pressure"],
+        response.data["main"]["temp"], 
+        response.data["main"]["temp_max"],
+        response.data["main"]["temp_min"],
+        response.data["main"]["feels_like"] ,
+        response.data["coord"]["lat"], 
+        response.data["coord"]["lon"], 
+        response.data["weater"][0]["description"]);
 
   }
 }
